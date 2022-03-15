@@ -3,7 +3,7 @@
 int main(int argc, char **argv)
 
 {
-    FILE *fs,*ft;
+    FILE *fs,*fd;
     int ch;
     if (argc != 3)
     {
@@ -17,10 +17,10 @@ int main(int argc, char **argv)
         printf("Can't find the source file");
         return 1;
     }
-    ft=fopen(argv[2],"w");
-    if(ft==NULL)
+    fd=fopen(argv[2],"w");
+    if(fd==NULL)
     {
-        printf("Can't find the source file");
+        printf("Can't find the destination file");
         fclose(fs);
         return 1;
     }
@@ -29,11 +29,11 @@ int main(int argc, char **argv)
     {
         ch=fgetc(fs);
         if(feof(fs)) break;
-        fputc(ch,ft);
+        fputc(ch,fd);
     }
 
     fclose(fs);
-    fclose(ft);
+    fclose(fd);
     return 0;
 }
 
